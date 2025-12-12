@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Design System - Modern & Professional */
+
+@layer base {
+  :root {
+    /* Base colors - Modern portfolio palette */
+    --background: 0 0% 100%;
+    --foreground: 215 25% 27%;
+    
+    /* Brand colors */
+    --primary: 215 25% 27%; /* Deep navy blue */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 189 94% 43%; /* Bright cyan */
+    
+    /* Accent colors */
+    --accent: 189 94% 43%; /* Cyan accent */
+    --accent-foreground: 0 0% 100%;
+    --accent-soft: 189 94% 43% / 0.1;
+    
+    /* Neutral colors */
+    --secondary: 210 11% 96%;
+    --secondary-foreground: 215 25% 27%;
+    --muted: 210 11% 96%;
+    --muted-foreground: 215 16% 47%;
+    
+    /* Card and surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+    --card-border: 210 11% 93%;
+    
+    /* Interactive elements */
+    --border: 210 11% 93%;
+    --input: 210 11% 93%;
+    --ring: 189 94% 43%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(215 25% 20%));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(189 94% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(215 25% 20%) 50%, hsl(var(--accent) / 0.1) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 11% 98%));
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px hsl(var(--primary) / 0.05);
+    --shadow-md: 0 4px 12px hsl(var(--primary) / 0.1);
+    --shadow-lg: 0 10px 25px hsl(var(--primary) / 0.15);
+    --shadow-glow: 0 0 20px hsl(var(--accent) / 0.3);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Layout */
+
+    --radius: 0.75rem;
+    --radius-lg: 1rem;
+    
+    /* Spacing */
+    --section-padding: 5rem 0;
+    --container-padding: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Portfolio specific utility classes */
+  .section-padding {
+    padding: var(--section-padding);
+  }
+  
+  .container-padding {
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+  }
+  
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-fast {
+    transition: var(--transition-fast);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px hsl(var(--accent) / 0.5), 0 0 40px hsl(var(--accent) / 0.2);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Animation utility classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
