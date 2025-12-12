@@ -228,7 +228,7 @@ import { ExternalLink, Github, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import oneStopImage from '@/assets/project-OneStop.png';
 import eventoraImage from '@/assets/project-eventora.png';
-import etrackImage from '@/assets/project-Etrack.png';
+import etrackImage from '@/assets/project-etrack.png';
 
 const Projects = () => {
   const projects = [
