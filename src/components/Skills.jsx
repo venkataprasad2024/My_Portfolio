@@ -5,39 +5,19 @@ const Skills = () => {
   const skillCategories = [
     {
       title: 'Programming Languages',
-      skills: [
-        { name: 'JavaScript', level: 90 },
-        { name: 'Java', level: 85 },
-        { name: 'Python', level: 80 },
-        { name: 'C', level: 75 },
-      ],
+      skills: ['JavaScript', 'Java', 'Python', 'C'],
     },
     {
       title: 'Web Technologies',
-      skills: [
-        { name: 'React.js', level: 90 },
-        { name: 'HTML/CSS', level: 95 },
-        { name: 'Node.js', level: 80 },
-        { name: 'Responsive Design', level: 90 },
-      ],
+      skills: ['React.js', 'HTML/CSS', 'Node.js', 'Responsive Design'],
     },
     {
       title: 'Databases & Tools',
-      skills: [
-        { name: 'MongoDB', level: 80 },
-        { name: 'SQL', level: 85 },
-        { name: 'Git/GitHub', level: 80 },
-        { name: 'VS Code', level: 90 },
-      ],
+      skills: ['MongoDB', 'SQL', 'Git/GitHub', 'VS Code'],
     },
     {
       title: 'Soft Skills',
-      skills: [
-        { name: 'Communication', level: 90 },
-        { name: 'Problem Solving', level: 95 },
-        { name: 'Team Management', level: 85 },
-        { name: 'Quick Learning', level: 90 },
-      ],
+      skills: ['Communication', 'Problem Solving', 'Team Management', 'Quick Learning'],
     },
   ];
 
@@ -45,9 +25,7 @@ const Skills = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.1 },
     },
   };
 
@@ -56,14 +34,10 @@ const Skills = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  const progressVariants = {
-    hidden: { width: 0 },
-    visible: { width: '100%' },
-  };
-
   return (
     <section id="skills" className="section-padding bg-secondary/30">
       <div className="max-w-7xl mx-auto container-padding">
+        
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -98,37 +72,18 @@ const Skills = () => {
               <h3 className="text-2xl font-semibold text-primary mb-6">
                 {category.title}
               </h3>
-              
-              <div className="space-y-6">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-foreground font-medium">
-                        {skill.name}
-                      </span>
-                      <span className="text-accent font-semibold">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    
-                    <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ 
-                          duration: 1.5, 
-                          delay: categoryIndex * 0.1 + skillIndex * 0.1,
-                          ease: "easeOut"
-                        }}
-                        className="h-full bg-gradient-to-r from-accent to-primary-glow rounded-full relative"
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary-glow animate-glow rounded-full" />
-                      </motion.div>
-                    </div>
-                  </div>
+
+              {/* Skills List - clean, no loaders */}
+              <ul className="space-y-3">
+                {category.skills.map((skill) => (
+                  <li
+                    key={skill}
+                    className="text-foreground font-medium bg-accent/10 px-4 py-2 rounded-lg border border-accent/20"
+                  >
+                    {skill}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </motion.div>
           ))}
         </motion.div>
@@ -144,11 +99,11 @@ const Skills = () => {
           <h3 className="text-xl font-semibold text-primary mb-6">
             Technologies I Work With
           </h3>
-          
+
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              'JavaScript ES6+', 'React.js', 'Node.js', 'MongoDB', 
-              'HTML5', 'CSS3', 'TailwindCSS', 'Git', 'GitHub', 
+              'JavaScript ES6+', 'React.js', 'Node.js', 'MongoDB',
+              'HTML5', 'CSS3', 'TailwindCSS', 'Git', 'GitHub',
               'VS Code', 'Responsive Design', 'REST APIs'
             ].map((tech, index) => (
               <motion.span
@@ -165,6 +120,7 @@ const Skills = () => {
             ))}
           </div>
         </motion.div>
+
       </div>
     </section>
   );

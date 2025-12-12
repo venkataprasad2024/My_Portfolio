@@ -74,16 +74,6 @@ const Certifications = () => {
       description: 'Enhanced communication, teamwork, and professional skills essential for workplace success.',
       skills: ['Communication', 'Leadership', 'Teamwork', 'Professional Skills'],
       color: 'accent'
-    },
-    {
-      title: 'NCAT 2025 Participation Certificate',
-      issuer: 'Naukri Campus',
-      type: 'Career Development',
-      year: '2025',
-      status: 'Completed',
-      description: 'Participated in campus recruitment activities and career development programs.',
-      skills: ['Career Planning', 'Interview Skills', 'Professional Networking'],
-      color: 'primary'
     }
   ];
 
@@ -247,7 +237,7 @@ const Certifications = () => {
             whileHover={{ scale: 1.05 }}
             className="text-center gradient-card p-6 rounded-xl border border-card-border"
           >
-            <div className="text-2xl font-bold text-accent mb-2">3</div>
+            <div className="text-2xl font-bold text-accent mb-2">4</div>
             <div className="text-sm text-muted-foreground">Programming Languages</div>
           </motion.div>
           
@@ -255,7 +245,7 @@ const Certifications = () => {
             whileHover={{ scale: 1.05 }}
             className="text-center gradient-card p-6 rounded-xl border border-card-border"
           >
-            <div className="text-2xl font-bold text-accent mb-2">4</div>
+            <div className="text-2xl font-bold text-accent mb-2">2</div>
             <div className="text-sm text-muted-foreground">Tech Certifications</div>
           </motion.div>
           
@@ -263,7 +253,7 @@ const Certifications = () => {
             whileHover={{ scale: 1.05 }}
             className="text-center gradient-card p-6 rounded-xl border border-card-border"
           >
-            <div className="text-2xl font-bold text-accent mb-2">2</div>
+            <div className="text-2xl font-bold text-accent mb-2">1</div>
             <div className="text-sm text-muted-foreground">Professional Skills</div>
           </motion.div>
         </motion.div>
