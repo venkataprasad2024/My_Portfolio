@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Send, Linkedin, Github, ExternalLink } from 'lucid
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@/hooks/use-toast.js';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
