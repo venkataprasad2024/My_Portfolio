@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Linkedin, Github, ExternalLink } from 'lucide-react';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Linkedin,
+  Github
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/hooks/use-toast.js';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
@@ -18,21 +25,20 @@ const Contact = () => {
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     setTimeout(() => {
       toast({
-        title: "Message Sent!",
+        title: 'Message Sent!',
         description: "Thank you for your message. I'll get back to you soon!",
       });
-      
+
       setFormData({ name: '', email: '', message: '' });
       setIsSubmitting(false);
     }, 1500);
@@ -42,54 +48,46 @@ const Contact = () => {
     {
       icon: <Mail size={24} />,
       label: 'Email',
-      value: 'sandhyakorimi5566@gmail.com',
-      href: 'mailto:sandhyakorimi5566@gmail.com',
-      color: 'accent'
+      value: 'pandillavenkataprasad@gmail.com',
+      href: 'mailto:pandillavenkataprasad@gmail.com',
+      color: 'accent',
     },
     {
       icon: <Phone size={24} />,
       label: 'Phone',
-      value: '+91 9505439502',
-      href: 'tel:+919505439502',
-      color: 'primary'
+      value: '+91 9398854629',
+      href: 'tel:+919398854629',
+      color: 'primary',
     },
     {
       icon: <MapPin size={24} />,
       label: 'Location',
       value: 'Andhra Pradesh, India',
       href: null,
-      color: 'accent'
-    }
+      color: 'accent',
+    },
   ];
 
   const socialLinks = [
     {
       icon: <Linkedin size={28} />,
       label: 'LinkedIn',
-      href: 'https://linkedin.com/in/sandhya-korimi-63798b307',
-      color: 'bg-blue-600 hover:bg-blue-700'
+      href: 'https://www.linkedin.com/in/venkata-prasad-pandilla-1bb744142/',
+      color: 'bg-blue-600 hover:bg-blue-700',
     },
     {
       icon: <Github size={28} />,
       label: 'GitHub',
-      href: 'https://github.com/sandhyakorimi',
-      color: 'bg-gray-800 hover:bg-gray-900'
+      href: 'https://github.com/venkataprasad2024',
+      color: 'bg-gray-800 hover:bg-gray-900',
     },
-    {
-      icon: <ExternalLink size={28} />,
-      label: 'ORCID',
-      href: 'https://orcid.org/my-orcid',
-      color: 'bg-green-600 hover:bg-green-700'
-    }
   ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
@@ -99,11 +97,17 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-background relative overflow-hidden">
+    <section
+      id="contact"
+      className="section-padding bg-background relative overflow-hidden"
+    >
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-accent rounded-full mix-blend-multiply filter blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl animate-float" style={{ animationDelay: '3s' }}></div>
+        <div className="absolute top-20 left-10 w-96 h-96 bg-accent rounded-full blur-3xl animate-float" />
+        <div
+          className="absolute bottom-20 right-10 w-96 h-96 bg-primary rounded-full blur-3xl animate-float"
+          style={{ animationDelay: '3s' }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto container-padding relative z-10">
@@ -115,17 +119,17 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-            Let's Work Together
+            Let&apos;s Work Together
           </h2>
           <div className="w-24 h-1 bg-accent mx-auto rounded-full mb-6" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            I'm always excited to discuss new opportunities and collaborate on interesting projects. 
-            Feel free to reach out!
+            I&apos;m always open to discussing new opportunities, projects, or
+            collaborations. Feel free to reach out!
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Contact Information */}
+          {/* Contact Info */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -133,26 +137,35 @@ const Contact = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            {/* Contact Methods */}
             <motion.div variants={itemVariants} className="space-y-6">
               <h3 className="text-2xl font-bold text-primary mb-6">
                 Get In Touch
               </h3>
-              
+
               {contactInfo.map((info) => (
                 <motion.div
                   key={info.label}
                   whileHover={{ scale: 1.02, x: 8 }}
-                  className="flex items-center gap-4 p-4 gradient-card rounded-xl border border-card-border hover:shadow-card transition-all duration-300"
+                  className="flex items-center gap-4 p-4 gradient-card rounded-xl border border-card-border transition-all"
                 >
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                    info.color === 'accent' ? 'bg-accent/10' : 'bg-primary/10'
-                  } shadow-glow`}>
-                    <div className={info.color === 'accent' ? 'text-accent' : 'text-primary'}>
+                  <div
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                      info.color === 'accent'
+                        ? 'bg-accent/10'
+                        : 'bg-primary/10'
+                    }`}
+                  >
+                    <div
+                      className={
+                        info.color === 'accent'
+                          ? 'text-accent'
+                          : 'text-primary'
+                      }
+                    >
                       {info.icon}
                     </div>
                   </div>
-                  
+
                   <div>
                     <p className="text-sm text-muted-foreground font-medium">
                       {info.label}
@@ -165,7 +178,9 @@ const Contact = () => {
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-foreground font-medium">{info.value}</p>
+                      <p className="text-foreground font-medium">
+                        {info.value}
+                      </p>
                     )}
                   </div>
                 </motion.div>
@@ -177,8 +192,8 @@ const Contact = () => {
               <h3 className="text-xl font-bold text-primary">
                 Connect With Me
               </h3>
-              
-              <div className="flex flex-wrap gap-4">
+
+              <div className="flex gap-4">
                 {socialLinks.map((social) => (
                   <motion.a
                     key={social.label}
@@ -187,18 +202,16 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -3 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`w-14 h-14 ${social.color} text-white rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 group`}
+                    className={`w-14 h-14 ${social.color} text-white rounded-xl flex items-center justify-center shadow-lg transition-all`}
                   >
-                    <div className="group-hover:scale-110 transition-transform">
-                      {social.icon}
-                    </div>
+                    {social.icon}
                   </motion.a>
                 ))}
               </div>
-              
+
               <p className="text-sm text-muted-foreground">
-                Feel free to connect with me on these platforms for professional networking 
-                and to see more of my work.
+                Feel free to connect with me for professional networking or
+                collaboration.
               </p>
             </motion.div>
 
@@ -210,12 +223,11 @@ const Contact = () => {
               <h4 className="text-lg font-semibold text-primary mb-3">
                 Currently Available
               </h4>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                I'm actively seeking frontend development opportunities and freelance projects. 
-                Open to full-time positions, internships, and exciting collaborations.
+              <p className="text-muted-foreground text-sm">
+                Open to full-time roles, internships, and freelance projects.
               </p>
               <div className="flex items-center gap-2 mt-4 text-accent text-sm font-medium">
-                <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+                <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
                 Available for immediate start
               </div>
             </motion.div>
@@ -227,83 +239,55 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="gradient-card p-8 rounded-3xl shadow-card-hover border border-card-border"
+            className="gradient-card p-8 rounded-3xl border border-card-border"
           >
             <h3 className="text-2xl font-bold text-primary mb-6">
               Send Me a Message
             </h3>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                  Your Name
-                </label>
-                <Input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="Enter your full name"
-                  className="w-full bg-background/50 border-card-border focus:border-accent focus:ring-accent/20"
-                />
-              </div>
+              <Input
+                name="name"
+                placeholder="Your Name"
+                required
+                value={formData.name}
+                onChange={handleInputChange}
+              />
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                  Email Address
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="your.email@example.com"
-                  className="w-full bg-background/50 border-card-border focus:border-accent focus:ring-accent/20"
-                />
-              </div>
+              <Input
+                name="email"
+                type="email"
+                placeholder="Your Email"
+                required
+                value={formData.email}
+                onChange={handleInputChange}
+              />
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={6}
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  placeholder="Tell me about your project or just say hello..."
-                  className="w-full bg-background/50 border-card-border focus:border-accent focus:ring-accent/20 resize-none"
-                />
-              </div>
+              <Textarea
+                name="message"
+                rows={6}
+                placeholder="Your Message"
+                required
+                value={formData.message}
+                onChange={handleInputChange}
+              />
 
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                size="lg"
-                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground shadow-glow hover:shadow-card-hover transition-all duration-300 transform hover:scale-105"
+                className="w-full bg-accent hover:bg-accent/90"
               >
-                {isSubmitting ? (
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin" />
-                    Sending...
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-2">
-                    <Send size={20} />
+                {isSubmitting ? 'Sending...' : (
+                  <>
+                    <Send size={18} className="mr-2" />
                     Send Message
-                  </div>
+                  </>
                 )}
               </Button>
             </form>
 
             <p className="text-xs text-muted-foreground text-center mt-6">
-              I'll get back to you within 24 hours. Looking forward to hearing from you!
+              I&apos;ll respond as soon as possible.
             </p>
           </motion.div>
         </div>

@@ -5,45 +5,49 @@ import { GraduationCap, Calendar, Award } from 'lucide-react';
 const Education = () => {
   const educationData = [
     {
-      degree: 'Masters of Computer Applications',
-      institution: 'Aditya College of Engineering & Technology, Surampalem',
+      degree: 'Master of Computer Application (MCA)',
+      institution: 'Aditya University, Andhra Pradesh, India',
       duration: '2024 - 2026',
-      grade: 'CGPA: 9.19',
+      grade: 'CGPA: 8.80',
       status: 'Currently Pursuing',
-      description: 'Specializing in advanced software development, web technologies, and system design.',
+      description:
+        'Focused on software development, web technologies, databases, and modern full stack development practices.',
       icon: <GraduationCap className="w-6 h-6" />,
-      color: 'accent'
+      color: 'accent',
     },
     {
-      degree: 'Bachelor of Computer Science',
-      institution: 'Adikavi Nannayya University, Rajamundry',
-      duration: '2021 - 2024',
-      grade: 'CGPA: 9.19',
+      degree: 'Bachelor of Commerce (B.Com)',
+      institution: 'Sri Venkateswara Degree College, Andhra Pradesh, India',
+      duration: '2019 - 2023',
+      grade: 'CGPA: 7.0',
       status: 'Completed',
-      description: 'Strong foundation in programming, algorithms, data structures, and software engineering principles.',
+      description:
+        'Built a strong foundation in business, accounting, management principles, and analytical thinking.',
       icon: <GraduationCap className="w-6 h-6" />,
-      color: 'primary'
+      color: 'primary',
     },
     {
-      degree: 'Board of Intermediate Education',
-      institution: 'Viveka Junior College, Tuni',
-      duration: '2019 - 2021',
-      grade: 'Percentage: 97.4%',
+      degree: 'Intermediate – MPC',
+      institution: 'Master Minds, Andhra Pradesh, India',
+      duration: '2017 - 2019',
+      grade: 'CGPA: 9.67',
       status: 'Completed',
-      description: 'Mathematics, Physics, Chemistry with focus on analytical and problem-solving skills.',
+      description:
+        'Studied Mathematics, Physics, and Chemistry with strong emphasis on logical reasoning and problem-solving skills.',
       icon: <Award className="w-6 h-6" />,
-      color: 'accent'
+      color: 'accent',
     },
     {
-      degree: 'Board of Secondary Education',
-      institution: 'Z.P.P High School, Guntapalli',
-      duration: '2018 - 2019',
-      grade: 'CGPA: 9.5',
+      degree: 'Secondary School Certificate (SSC)',
+      institution: 'Sri Samskruti School, Andhra Pradesh, India',
+      duration: '2016 - 2017',
+      grade: 'CGPA: 9.8',
       status: 'Completed',
-      description: 'Comprehensive secondary education with excellent academic performance.',
+      description:
+        'Achieved excellent academic performance with a well-rounded foundation in core subjects.',
       icon: <Award className="w-6 h-6" />,
-      color: 'primary'
-    }
+      color: 'primary',
+    },
   ];
 
   const containerVariants = {
@@ -58,10 +62,10 @@ const Education = () => {
 
   const cardVariants = {
     hidden: { opacity: 0, x: -50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
-      transition: { duration: 0.6 }
+      transition: { duration: 0.6 },
     },
   };
 
@@ -80,7 +84,7 @@ const Education = () => {
           </h2>
           <div className="w-24 h-1 bg-accent mx-auto rounded-full mb-6" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            My academic journey has provided me with a strong foundation in computer science and technology
+            My academic journey reflects consistent performance and a growing passion for technology and development.
           </p>
         </motion.div>
 
@@ -108,9 +112,7 @@ const Education = () => {
               >
                 {/* Timeline Dot */}
                 <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-background border-4 border-accent rounded-full items-center justify-center shadow-glow z-10">
-                  <div className="text-accent">
-                    {edu.icon}
-                  </div>
+                  <div className="text-accent">{edu.icon}</div>
                 </div>
 
                 {/* Content Card */}
@@ -121,21 +123,25 @@ const Education = () => {
                     className="gradient-card rounded-2xl p-8 shadow-card hover:shadow-card-hover border border-card-border relative"
                   >
                     {/* Status Badge */}
-                    <div className={`absolute top-4 ${index % 2 === 0 ? 'md:left-4' : 'md:right-4'} right-4`}>
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                        edu.status === 'Currently Pursuing' 
-                          ? 'bg-accent/10 text-accent border border-accent/20' 
-                          : 'bg-muted text-muted-foreground border border-card-border'
-                      }`}>
+                    <div
+                      className={`absolute top-4 ${
+                        index % 2 === 0 ? 'md:left-4' : 'md:right-4'
+                      } right-4`}
+                    >
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                          edu.status === 'Currently Pursuing'
+                            ? 'bg-accent/10 text-accent border border-accent/20'
+                            : 'bg-muted text-muted-foreground border border-card-border'
+                        }`}
+                      >
                         {edu.status}
                       </span>
                     </div>
 
                     {/* Mobile Icon */}
                     <div className="md:hidden flex items-center justify-center w-12 h-12 bg-accent/10 rounded-full mb-4 mx-auto">
-                      <div className="text-accent">
-                        {edu.icon}
-                      </div>
+                      <div className="text-accent">{edu.icon}</div>
                     </div>
 
                     <div className="pt-4">
@@ -143,38 +149,41 @@ const Education = () => {
                         <Calendar size={16} />
                         {edu.duration}
                       </div>
-                      
+
                       <h3 className="text-xl font-bold text-primary mb-2">
                         {edu.degree}
                       </h3>
-                      
+
                       <p className="text-muted-foreground font-medium mb-3">
                         {edu.institution}
                       </p>
-                      
+
                       <div className="text-accent font-bold text-lg mb-4">
                         {edu.grade}
                       </div>
-                      
+
                       <p className="text-muted-foreground text-sm leading-relaxed">
                         {edu.description}
                       </p>
                     </div>
 
                     {/* Decorative Element */}
-                    <div className={`absolute -bottom-2 ${index % 2 === 0 ? 'md:-left-2' : 'md:-right-2'} -right-2 w-8 h-8 bg-accent/20 rounded-full animate-float`} 
-                         style={{ animationDelay: `${index * 0.5}s` }} />
+                    <div
+                      className={`absolute -bottom-2 ${
+                        index % 2 === 0 ? 'md:-left-2' : 'md:-right-2'
+                      } -right-2 w-8 h-8 bg-accent/20 rounded-full animate-float`}
+                      style={{ animationDelay: `${index * 0.5}s` }}
+                    />
                   </motion.div>
                 </div>
 
-                {/* Spacer for alternating layout */}
                 <div className="hidden md:block w-5/12" />
               </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* Academic Achievements */}
+        {/* Academic Highlights */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -185,30 +194,30 @@ const Education = () => {
           <h3 className="text-2xl font-bold text-primary mb-8">
             Academic Highlights
           </h3>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="gradient-card p-6 rounded-xl border border-card-border"
             >
-              <div className="text-3xl font-bold text-accent mb-2">9.19</div>
-              <div className="text-sm text-muted-foreground">Current MCA CGPA</div>
+              <div className="text-3xl font-bold text-accent mb-2">8.80</div>
+              <div className="text-sm text-muted-foreground">MCA CGPA</div>
             </motion.div>
-            
+
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="gradient-card p-6 rounded-xl border border-card-border"
             >
-              <div className="text-3xl font-bold text-accent mb-2">9.19</div>
-              <div className="text-sm text-muted-foreground">BSc CGPA</div>
+              <div className="text-3xl font-bold text-accent mb-2">7.0</div>
+              <div className="text-sm text-muted-foreground">B.Com CGPA</div>
             </motion.div>
-            
+
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="gradient-card p-6 rounded-xl border border-card-border"
             >
-              <div className="text-3xl font-bold text-accent mb-2">97.4%</div>
-              <div className="text-sm text-muted-foreground">Intermediate Score</div>
+              <div className="text-3xl font-bold text-accent mb-2">9.67</div>
+              <div className="text-sm text-muted-foreground">Intermediate CGPA</div>
             </motion.div>
           </div>
         </motion.div>
