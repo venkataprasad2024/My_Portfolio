@@ -8,119 +8,129 @@ const Skills = () => {
       skills: ['JavaScript', 'Java', 'Python', 'C'],
     },
     {
-      title: 'Web Technologies',
-      skills: ['React.js', 'HTML/CSS', 'Node.js', 'Responsive Design'],
+      title: 'Frontend Technologies',
+      skills: ['React.js', 'HTML/CSS', 'Tailwind CSS', 'Responsive Design'],
     },
     {
-      title: 'Databases & Tools',
-      skills: ['MongoDB', 'SQL', 'Git/GitHub', 'VS Code'],
+      title: 'Backend & Databases',
+      skills: ['Node.js', 'Express.js', 'MongoDB', 'SQL'],
     },
     {
-      title: 'Soft Skills',
-      skills: ['Communication', 'Problem Solving', 'Team Management', 'Quick Learning'],
+      title: 'Tools & Soft Skills',
+      skills: ['Git/GitHub', 'VS Code', 'Problem Solving', 'Team Collaboration'],
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
+  const techTags = [
+    'JavaScript ES6+', 'React.js', 'Node.js', 'Express.js',
+    'MongoDB', 'Tailwind CSS', 'Git', 'GitHub',
+    'REST APIs', 'Next.js', 'TypeScript', 'Figma'
+  ];
 
   return (
-    <section id="skills" className="section-padding bg-secondary/30">
-      <div className="max-w-7xl mx-auto container-padding">
-        
-        {/* Header */}
+    <section id="skills" className="py-20 md:py-32 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
+      {/* Subtle Background Blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl animate-blob" />
+        <div className="absolute bottom-32 right-20 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl animate-blob animation-delay-2" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16 md:mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-            Skills & Expertise
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
+            <span className="text-gray-400">My</span>{' '}
+            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-emerald-400 bg-clip-text text-transparent">
+              Skills
+            </span>
           </h2>
-          <div className="w-24 h-1 bg-accent mx-auto rounded-full mb-6" />
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Here are the technologies and skills I've mastered through my academic journey and hands-on projects
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="w-32 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full mx-auto mt-6"
+          />
+          <p className="mt-6 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            Technologies and tools I've mastered through hands-on projects, academic training, and continuous learning.
           </p>
         </motion.div>
 
-        {/* Skills Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid md:grid-cols-2 gap-8"
-        >
-          {skillCategories.map((category, categoryIndex) => (
+        {/* Skills Categories Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+          {skillCategories.map((category, index) => (
             <motion.div
               key={category.title}
-              variants={cardVariants}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              className="gradient-card rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 border border-card-border"
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.15 }}
+              whileHover={{ y: -10 }}
+              className="group relative p-8 rounded-2xl bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 overflow-hidden"
             >
-              <h3 className="text-2xl font-semibold text-primary mb-6">
+              {/* Glow on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <h3 className="text-xl md:text-2xl font-bold text-gray-100 mb-6 relative z-10">
                 {category.title}
               </h3>
 
-              {/* Skills List - clean, no loaders */}
-              <ul className="space-y-3">
+              <ul className="space-y-4 relative z-10">
                 {category.skills.map((skill) => (
-                  <li
+                  <motion.li
                     key={skill}
-                    className="text-foreground font-medium bg-accent/10 px-4 py-2 rounded-lg border border-accent/20"
+                    whileHover={{ x: 8 }}
+                    className="flex items-center text-gray-300 font-medium"
                   >
+                    <span className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mr-3" />
                     {skill}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
+
+              {/* Floating orb accent */}
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000" />
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Additional Skills Tags */}
+        {/* Tech Tags Cloud - Fixed hover effect (matches About section) */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-16 text-center"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-center"
         >
-          <h3 className="text-xl font-semibold text-primary mb-6">
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-200 mb-10">
             Technologies I Work With
           </h3>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              'JavaScript ES6+', 'React.js', 'Node.js', 'MongoDB',
-              'HTML5', 'CSS3', 'TailwindCSS', 'Git', 'GitHub',
-              'VS Code', 'Responsive Design', 'REST APIs'
-            ].map((tech, index) => (
+          <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
+            {techTags.map((tech, index) => (
               <motion.span
                 key={tech}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                whileHover={{ scale: 1.1, y: -2 }}
-                className="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium border border-accent/20 hover:bg-accent/20 transition-all duration-300 cursor-default"
+                transition={{ delay: index * 0.05, duration: 0.5 }}
+                whileHover={{ 
+                  y: -8,
+                  transition: { duration: 0.4, ease: "easeOut" }
+                }}
+                className="px-6 py-3 bg-gradient-to-r from-gray-800/80 to-gray-900/80 backdrop-blur-md text-gray-200 rounded-full text-sm md:text-base font-medium border border-gray-700 hover:shadow-lg hover:shadow-cyan-500/30 transition-shadow duration-500 cursor-default"
               >
                 {tech}
               </motion.span>
             ))}
           </div>
         </motion.div>
-
       </div>
     </section>
   );

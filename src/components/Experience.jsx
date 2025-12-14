@@ -19,201 +19,187 @@ const Experience = () => {
       'Applied best practices in responsive design and modern web development'
     ],
     technologies: [
-      'React.js', 'Node.js', 'MongoDB', 'JavaScript', 'HTML5', 'CSS3', 'Git'
+      'React.js', 'Node.js', 'MongoDB', 'JavaScript', 'HTML5', 'CSS3', 'Git', 'Express.js'
     ],
     achievements: [
-      'Built 3+ complete web applications',
-      '25% improvement in UX metrics',
-      'Mastered 6+ modern technologies',
-      'Deployed production-ready apps'
+      '3+ Complete Apps',
+      '25% UX Improvement',
+      'Mastered 6+ Technologies',
+      'Production Deployment'
     ]
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
-    <section id="experience" className="section-padding bg-background">
-      <div className="max-w-7xl mx-auto container-padding">
-        {/* Header */}
+    <section id="experience" className="py-20 md:py-32 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
+      {/* Background Blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+        <div className="absolute top-10 left-10 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl animate-blob" />
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl animate-blob animation-delay-2" />
+        <div className="absolute top-1/2 -right-40 w-72 h-72 bg-emerald-600/15 rounded-full blur-3xl animate-blob animation-delay-4" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16 md:mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-            Professional Experience
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
+            <span className="text-gray-400">Professional</span>{' '}
+            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-emerald-400 bg-clip-text text-transparent">
+              Experience
+            </span>
           </h2>
-          <div className="w-24 h-1 bg-accent mx-auto rounded-full mb-6" />
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            My hands-on training experience in full-stack development has equipped me with practical skills and real-world project experience
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="w-32 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full mx-auto mt-6"
+          />
+          <p className="mt-6 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            Hands-on training in full-stack development, building real-world applications and mastering modern technologies.
           </p>
         </motion.div>
 
-        {/* Experience Card */}
+        {/* Main Experience Card */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="max-w-5xl mx-auto"
         >
           <motion.div
-            variants={itemVariants}
-            whileHover={{ y: -8 }}
-            transition={{ duration: 0.3 }}
-            className="gradient-card rounded-3xl p-8 md:p-12 shadow-card hover:shadow-card-hover border border-card-border relative overflow-hidden"
+            whileHover={{ y: -12, scale: 1.01 }}
+            className="relative p-8 md:p-12 rounded-3xl bg-gradient-to-br from-gray-800/50 to-gray-900/70 backdrop-blur-md border border-gray-700/50 overflow-hidden group"
           >
-            {/* Background Elements */}
-            <div className="absolute top-4 right-4 w-24 h-24 bg-accent/5 rounded-full animate-float" />
-            <div className="absolute bottom-4 left-4 w-16 h-16 bg-primary/5 rounded-full animate-float" style={{ animationDelay: '2s' }} />
+            {/* Inner Glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+
+            {/* Floating Orbs */}
+            <div className="absolute top-8 right-8 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 left-10 w-40 h-40 bg-purple-500/15 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000" />
 
             {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-start gap-6 mb-8">
+            <div className="flex flex-col md:flex-row items-start gap-8 mb-10">
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center shadow-glow">
-                  <Briefcase className="w-8 h-8 text-accent" />
+                <div className="w-20 h-20 bg-gradient-to-br from-cyan-500/30 to-purple-500/30 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-cyan-500/40 shadow-xl shadow-cyan-500/30">
+                  <Briefcase className="w-10 h-10 text-cyan-400" />
                 </div>
               </div>
-              
+
               <div className="flex-grow">
-                <div className="flex flex-wrap items-center gap-3 mb-3">
-                  <span className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-semibold border border-accent/20">
+                <div className="flex flex-wrap items-center gap-4 mb-4">
+                  <span className="px-5 py-2 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-400 rounded-full text-sm font-bold border border-cyan-500/50 backdrop-blur-sm">
                     {experience.type}
                   </span>
-                  <div className="flex items-center gap-1 text-muted-foreground text-sm">
-                    <Calendar size={14} />
+                  <div className="flex items-center gap-2 text-gray-300 text-sm">
+                    <Calendar className="w-5 h-5 text-cyan-400" />
                     {experience.duration}
                   </div>
+                  <div className="flex items-center gap-2 text-gray-300 text-sm">
+                    <MapPin className="w-5 h-5 text-purple-400" />
+                    {experience.location}
+                  </div>
                 </div>
-                
-                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-2">
+
+                <h3 className="text-3xl md:text-4xl font-bold text-gray-100 mb-3">
                   {experience.title}
                 </h3>
-                
-                <p className="text-xl text-muted-foreground font-medium mb-3">
+                <p className="text-xl text-gray-300 font-medium">
                   {experience.company}
                 </p>
-                
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <MapPin size={16} />
-                  {experience.location}
-                </div>
               </div>
             </div>
 
             {/* Description */}
-            <motion.div
-              variants={itemVariants}
-              className="mb-8"
-            >
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                {experience.description}
-              </p>
-            </motion.div>
+            <p className="text-lg text-gray-300 leading-relaxed mb-10 max-w-4xl">
+              {experience.description}
+            </p>
 
-            {/* Key Responsibilities */}
-            <motion.div
-              variants={itemVariants}
-              className="mb-8"
-            >
-              <h4 className="text-xl font-semibold text-primary mb-4 flex items-center gap-2">
-                <TrendingUp size={20} />
+            {/* Responsibilities */}
+            <div className="mb-12">
+              <h4 className="text-2xl font-bold text-gray-200 mb-6 flex items-center gap-3">
+                <TrendingUp className="w-7 h-7 text-emerald-400" />
                 Key Responsibilities & Achievements
               </h4>
-              <ul className="space-y-3">
-                {experience.responsibilities.map((responsibility, index) => (
+              <ul className="grid md:grid-cols-2 gap-4">
+                {experience.responsibilities.map((item, i) => (
                   <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
+                    key={i}
+                    initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-3 text-muted-foreground"
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-start gap-4 text-gray-300"
                   >
-                    <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
-                    <span className="leading-relaxed">{responsibility}</span>
+                    <div className="w-2.5 h-2.5 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mt-1.5 flex-shrink-0" />
+                    <span className="leading-relaxed">{item}</span>
                   </motion.li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
 
-            {/* Technologies Used */}
-            <motion.div
-              variants={itemVariants}
-              className="mb-8"
-            >
-              <h4 className="text-lg font-semibold text-primary mb-4">
+            {/* Technologies */}
+            <div className="mb-12">
+              <h4 className="text-xl font-bold text-gray-200 mb-6">
                 Technologies & Tools
               </h4>
-              <div className="flex flex-wrap gap-3">
-                {experience.technologies.map((tech, index) => (
+              <div className="flex flex-wrap gap-4">
+                {experience.technologies.map((tech, i) => (
                   <motion.span
                     key={tech}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.05 }}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium border border-accent/20 hover:bg-accent/20 transition-all duration-300"
+                    transition={{ delay: i * 0.05 }}
+                    whileHover={{ scale: 1.1, y: -4 }}
+                    className="px-6 py-3 bg-gradient-to-r from-gray-800/80 to-gray-900/80 backdrop-blur-md text-gray-200 rounded-full text-sm md:text-base font-medium border border-gray-700 hover:border-cyan-500/50 transition-all duration-300"
                   >
                     {tech}
                   </motion.span>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
-            {/* Key Achievements Grid */}
-            <motion.div
-              variants={itemVariants}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4"
-            >
-              {experience.achievements.map((achievement, index) => (
-                <motion.div
-                  key={achievement}
-                  whileHover={{ scale: 1.05 }}
-                  className="text-center p-4 gradient-card rounded-xl border border-card-border"
+            {/* Achievement Highlights - Hover effects REMOVED */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {experience.achievements.map((ach, i) => (
+                <div
+                  key={i}
+                  className="text-center p-5 md:p-6 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-purple-500/10 border border-cyan-500/30 backdrop-blur-sm"
                 >
-                  <div className="text-accent font-bold text-sm mb-1">
-                    {achievement.split(' ')[0]}
+                  <div className="text-xl sm:text-2xl font-bold text-cyan-400 mb-2 break-words">
+                    {ach.split(' ')[0]}
                   </div>
-                  <div className="text-muted-foreground text-xs">
-                    {achievement.split(' ').slice(1).join(' ')}
+                  <div className="text-xs sm:text-sm text-gray-400 break-words px-2">
+                    {ach.split(' ').slice(1).join(' ')}
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
         </motion.div>
 
-        {/* Career Timeline Preview */}
+        {/* Looking Forward */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-16 text-center"
+          transition={{ delay: 0.6 }}
+          className="mt-24 text-center"
         >
-          <div className="gradient-card p-8 rounded-2xl border border-card-border inline-block">
-            <h3 className="text-xl font-semibold text-primary mb-4">
+          <div className="inline-block p-8 md:p-10 rounded-3xl bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-md border border-gray-700/50 max-w-3xl mx-auto">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-100 mb-6">
               Looking Forward
             </h3>
-            <p className="text-muted-foreground max-w-md">
-              Eager to apply my skills in a challenging frontend development role 
-              where I can contribute to innovative projects and continue growing as a developer.
+            <p className="text-base md:text-lg text-gray-300 leading-relaxed px-4">
+              Eager to bring my full-stack skills, passion for clean code, and user-centric design to a dynamic team —
+              ready to contribute to innovative projects and grow as a professional developer.
             </p>
           </div>
         </motion.div>

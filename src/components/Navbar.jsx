@@ -8,7 +8,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -25,30 +25,26 @@ const Navbar = () => {
   ];
 
   const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-background/95 backdrop-blur-md shadow-card border-b border-card-border'
+          ? 'bg-gray-900/80 backdrop-blur-xl shadow-2xl shadow-black/50 border-b border-gray-800'
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
+            whileHover={{ scale: 1.05 }}
             className="flex-shrink-0"
           >
             <a
@@ -57,86 +53,87 @@ const Navbar = () => {
                 e.preventDefault();
                 scrollToSection('#home');
               }}
-              className={`text-2xl font-bold gradient-primary bg-clip-text ${
-                isScrolled ? 'text-foreground' : 'text-white'
-              }`}
+              className="text-3xl font-bold tracking-tight"
             >
-              Venkata Prasad
+              <span className="text-gray-300">Venkata Prasad</span>
             </a>
           </motion.div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              {navItems.map((item, index) => (
-                <motion.a
-                  key={item.name}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + index * 0.1 }}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(item.href);
-                  }}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors relative group ${
-                    isScrolled
-                      ? 'text-foreground hover:text-accent'
-                      : 'text-white hover:text-accent'
-                  }`}
-                >
+          {/* Desktop Navigation - Only on wide screens (xl and up) */}
+          <div className="hidden xl:flex items-center space-x-1">
+            {navItems.map((item, index) => (
+              <motion.a
+                key={item.name}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + index * 0.1 }}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href);
+                }}
+                className="relative px-6 py-3 text-gray-300 hover:text-white transition-all duration-300 group"
+              >
+                <span className="relative z-10 text-sm font-medium tracking-wide uppercase">
                   {item.name}
-                  <span className="absolute inset-x-0 bottom-0 h-0.5 bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform" />
-                </motion.a>
-              ))}
-            </div>
+                </span>
+
+                {/* Subtle hover glow */}
+                <motion.span
+                  className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
+                />
+
+                {/* Gradient underline */}
+                <span className="absolute bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-500 group-hover:w-full group-hover:left-0 transition-all duration-500" />
+              </motion.a>
+            ))}
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Hamburger Button - Visible on all screens below xl */}
+          <div className="xl:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 ${
-                isScrolled
-                  ? 'text-foreground hover:text-accent'
-                  : 'text-white hover:text-accent'
-              }`}
+              className="p-3 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300 focus:outline-none"
+              aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/95 backdrop-blur-md border-t border-card-border"
-          >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(item.href);
-                  }}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                    isScrolled
-                      ? 'text-foreground hover:text-accent hover:bg-secondary'
-                      : 'text-white hover:text-accent hover:bg-secondary'
-                  }`}
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
       </div>
+
+      {/* Mobile Menu */}
+      <motion.div
+        initial={false}
+        animate={{
+          maxHeight: isMobileMenuOpen ? '600px' : '0px',
+          opacity: isMobileMenuOpen ? 1 : 0,
+        }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+        className="xl:hidden overflow-hidden bg-gray-900/95 backdrop-blur-xl border-t border-gray-800"
+      >
+        <div className="px-6 py-8 space-y-2">
+          {navItems.map((item, index) => (
+            <motion.a
+              key={item.name}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{
+                opacity: isMobileMenuOpen ? 1 : 0,
+                x: isMobileMenuOpen ? 0 : -30,
+              }}
+              transition={{ delay: isMobileMenuOpen ? index * 0.08 : 0, duration: 0.3 }}
+              href={item.href}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(item.href);
+              }}
+              className="block py-4 px-6 text-xl font-medium text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-purple-500/10 rounded-xl transition-all duration-300"
+            >
+              {item.name}
+            </motion.a>
+          ))}
+        </div>
+      </motion.div>
     </motion.nav>
   );
 };

@@ -21,7 +21,6 @@ const Certifications = () => {
         'Authentication',
         'Responsive Design',
       ],
-      color: 'accent',
       featured: true,
     },
     {
@@ -31,7 +30,7 @@ const Certifications = () => {
       year: '2024',
       status: 'Completed',
       description:
-        'Gained a strong foundation in JavaScript programming including syntax, control structures, functions, problem-solving, DOM manipulation, events, and object-oriented JavaScript concepts.',
+        'Gained a strong foundation in JavaScript programming including syntax, control structures, functions, problem-solving, DOM manipulation, events, and object-oriented concepts.',
       skills: [
         'JavaScript',
         'DOM Manipulation',
@@ -39,7 +38,6 @@ const Certifications = () => {
         'OOP',
         'Problem Solving',
       ],
-      color: 'primary',
     },
     {
       title: 'Java Programming',
@@ -55,153 +53,127 @@ const Certifications = () => {
         'Data Structures',
         'Problem Solving',
       ],
-      color: 'accent',
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
-    <section id="certifications" className="section-padding bg-secondary/30">
-      <div className="max-w-7xl mx-auto container-padding">
-        {/* Header */}
+    <section id="certifications" className="py-20 md:py-32 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
+      {/* Background Blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+        <div className="absolute top-10 left-20 w-80 h-80 bg-cyan-600/20 rounded-full blur-3xl animate-blob" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-blob animation-delay-4" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16 md:mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-            Certifications
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
+            <span className="text-gray-400">My</span>{' '}
+            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-emerald-400 bg-clip-text text-transparent">
+              Certifications
+            </span>
           </h2>
-          <div className="w-24 h-1 bg-accent mx-auto rounded-full mb-6" />
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Industry-recognized certifications showcasing my technical skills and commitment to continuous learning
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="w-32 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full mx-auto mt-6"
+          />
+          <p className="mt-6 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            Industry-recognized credentials that validate my expertise and dedication to continuous growth in web development.
           </p>
         </motion.div>
 
         {/* Certifications Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {certifications.map((cert, index) => (
             <motion.div
               key={cert.title}
-              variants={cardVariants}
-              transition={{ duration: 0.6 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className={`gradient-card rounded-2xl p-6 shadow-card hover:shadow-card-hover border border-card-border relative ${
-                cert.featured ? 'ring-2 ring-accent/20' : ''
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.15 }}
+              whileHover={{ y: -12, scale: 1.03 }}
+              className={`relative p-8 rounded-2xl bg-gradient-to-br from-gray-800/50 to-gray-900/60 backdrop-blur-md border border-gray-700/50 overflow-hidden group ${
+                cert.featured ? 'ring-4 ring-cyan-500/30' : ''
               }`}
             >
+              {/* Inner Glow on Hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
               {/* Featured Badge */}
               {cert.featured && (
-                <div className="absolute top-4 right-4 bg-accent text-accent-foreground px-2 py-1 rounded-full text-xs font-semibold">
+                <div className="absolute -top-3 -right-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg shadow-purple-500/30">
                   Featured
                 </div>
               )}
 
-              {/* Status & Year */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                      cert.color === 'accent'
-                        ? 'bg-accent/10'
-                        : 'bg-primary/10'
-                    }`}
-                  >
-                    <Award
-                      className={`w-5 h-5 ${
-                        cert.color === 'accent'
-                          ? 'text-accent'
-                          : 'text-primary'
-                      }`}
-                    />
+              {/* Header */}
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-cyan-500/30">
+                    <Award className="w-8 h-8 text-cyan-400" />
                   </div>
-                  <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                    <Calendar size={12} />
-                    {cert.year}
+                  <div>
+                    <div className="flex items-center gap-2 text-cyan-400 text-sm font-medium">
+                      <Calendar size={16} />
+                      {cert.year}
+                    </div>
+                    <div className="flex items-center gap-2 text-emerald-400 text-sm font-medium mt-1">
+                      <CheckCircle size={16} />
+                      {cert.status}
+                    </div>
                   </div>
-                </div>
-
-                <div className="flex items-center gap-1">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
-                  <span className="text-xs font-medium text-green-500">
-                    Completed
-                  </span>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="space-y-4">
+              <div className="relative z-10 space-y-4">
                 <div>
-                  <h3 className="text-lg font-bold text-primary mb-1">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-100 mb-2">
                     {cert.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground font-medium">
-                    {cert.issuer}
-                  </p>
-                  <span
-                    className={`inline-block mt-2 px-2 py-1 rounded text-xs font-medium ${
-                      cert.color === 'accent'
-                        ? 'bg-accent/10 text-accent border border-accent/20'
-                        : 'bg-primary/10 text-primary border border-primary/20'
-                    }`}
-                  >
+                  <p className="text-gray-300 font-medium">{cert.issuer}</p>
+                  <span className="inline-block mt-3 px-4 py-1.5 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-400 text-xs font-semibold rounded-full border border-cyan-500/40">
                     {cert.type}
                   </span>
                 </div>
 
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-gray-400 text-sm leading-relaxed">
                   {cert.description}
                 </p>
 
-                {/* Skills */}
-                <div className="flex flex-wrap gap-1">
-                  {cert.skills.slice(0, 4).map((skill) => (
+                {/* Skills Tags */}
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {cert.skills.slice(0, 5).map((skill) => (
                     <span
                       key={skill}
-                      className="px-2 py-1 bg-muted/50 text-muted-foreground rounded text-xs"
+                      className="px-3 py-1.5 bg-gray-800/60 backdrop-blur-sm text-gray-300 text-xs font-medium rounded-full border border-gray-700 hover:border-cyan-500/50 transition-all duration-300"
                     >
                       {skill}
                     </span>
                   ))}
-                  {cert.skills.length > 4 && (
-                    <span className="px-2 py-1 bg-muted/50 text-muted-foreground rounded text-xs">
-                      +{cert.skills.length - 4} more
+                  {cert.skills.length > 5 && (
+                    <span className="px-3 py-1.5 bg-gray-800/60 text-gray-400 text-xs font-medium rounded-full">
+                      +{cert.skills.length - 5} more
                     </span>
                   )}
                 </div>
               </div>
 
-              {/* Decorative Element */}
-              <div
-                className={`absolute -bottom-2 -right-2 w-8 h-8 rounded-full opacity-20 animate-float ${
-                  cert.color === 'accent' ? 'bg-accent' : 'bg-primary'
-                }`}
-                style={{ animationDelay: `${index * 0.2}s` }}
-              />
+              {/* Floating Orb Accent */}
+              <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000" />
+              <div className="absolute -top-10 -right-10 w-24 h-24 bg-purple-500/20 rounded-full blur-3xl" />
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
