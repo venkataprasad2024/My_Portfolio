@@ -6,8 +6,6 @@ A modern, futuristic personal portfolio built with **React** and **TailwindCSS**
 
 🌌 **Live Demo**: [Visit Portfolio](https://myportfolio-pi-mauve-95.vercel.app/) 
 
-<img src="./public/screenshot-desktop.png" alt="Portfolio Desktop Preview" width="100%"/>
-<img src="./public/screenshot-mobile.png" alt="Portfolio Mobile Preview" width="40%"/>
 
 </div>
 
