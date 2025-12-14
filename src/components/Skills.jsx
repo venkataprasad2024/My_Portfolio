@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
 
 const Skills = () => {
   const skillCategories = [
@@ -25,6 +26,27 @@ const Skills = () => {
     'JavaScript ES6+', 'React.js', 'Node.js', 'Express.js',
     'MongoDB', 'Tailwind CSS', 'Git', 'GitHub',
     'REST APIs', 'Next.js', 'TypeScript', 'Figma'
+  ];
+
+  const codingPlatforms = [
+    {
+      name: 'LeetCode',
+      username: 'venkataprasad123',
+      url: 'https://leetcode.com/u/venkataprasad123/',
+      icon: '💻',
+    },
+    {
+      name: 'GeeksforGeeks',
+      username: 'pandillavenvxpk',
+      url: 'https://www.geeksforgeeks.org/profile/pandillavenvxpk',
+      icon: '🧠',
+    },
+    {
+      name: 'CodeChef',
+      username: 'venkataprasad3',
+      url: 'https://www.codechef.com/users/venkataprasad3',
+      icon: '🔥',
+    },
   ];
 
   return (
@@ -76,7 +98,7 @@ const Skills = () => {
             >
               {/* Glow on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
+             
               <h3 className="text-xl md:text-2xl font-bold text-gray-100 mb-6 relative z-10">
                 {category.title}
               </h3>
@@ -100,13 +122,13 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Tech Tags Cloud - Fixed hover effect (matches About section) */}
+        {/* Tech Tags Cloud */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-center"
+          className="text-center mb-20"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-gray-200 mb-10">
             Technologies I Work With
@@ -120,7 +142,7 @@ const Skills = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05, duration: 0.5 }}
-                whileHover={{ 
+                whileHover={{
                   y: -8,
                   transition: { duration: 0.4, ease: "easeOut" }
                 }}
@@ -128,6 +150,56 @@ const Skills = () => {
               >
                 {tech}
               </motion.span>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Coding Platforms Showcase */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center"
+        >
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-200 mb-12">
+            Coding Platforms
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {codingPlatforms.map((platform, index) => (
+              <motion.a
+                key={platform.name}
+                href={platform.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+                whileHover={{
+                  y: -8,
+                  transition: { duration: 0.4, ease: "easeOut" }
+                }}
+                className="group relative block p-8 rounded-2xl bg-gradient-to-br from-gray-800/60 to-gray-900/70 backdrop-blur-md border border-gray-700/50 overflow-hidden hover:shadow-lg hover:shadow-cyan-500/30 transition-shadow duration-500"
+              >
+                <div className="relative z-10 text-center space-y-4">
+                  <div className="text-5xl">{platform.icon}</div>
+                  <h4 className="text-2xl font-bold text-gray-100">
+                    {platform.name}
+                  </h4>
+                  <p className="text-gray-400 text-sm">
+                    {platform.username}
+                  </p>
+                  <div className="flex items-center justify-center gap-2 text-cyan-400">
+                    <ExternalLink size={18} />
+                    <span className="text-sm font-medium">View Profile</span>
+                  </div>
+                </div>
+
+                {/* Floating Orb */}
+                <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000" />
+              </motion.a>
             ))}
           </div>
         </motion.div>

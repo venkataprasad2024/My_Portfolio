@@ -164,7 +164,7 @@ const Footer = () => {
           <div className="flex items-center gap-3 text-sm">
             <span>© 2025 Venkata Prasad</span>
             
-            <span>Crafted with passion using React & Tailwind</span>
+            <span>Full Stack Developer</span>
           </div>
 
           <Button

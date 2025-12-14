@@ -1,30 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-  import { ExternalLink, Github, Calendar } from 'lucide-react';
-  import { Button } from '@/components/ui/button';
+import { ExternalLink, Github, Calendar } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
-  // Update these paths when you add your actual images
-  import petGroomingImage from '@/assets/ petgrooming_project.png';
-  import miniTasksImage from '@/assets/ mini_tasks_project.png';
-  import etrackImage from '@/assets/project-etrack.png';
+// Update these paths when you add your actual images
+import miniTasksImage from '@/assets/ mini_tasks_project.png';
+import petGroomingImage from '@/assets/ petgrooming_project.png';
+import etrackImage from '@/assets/ project-etrack.png';
+import portfolioImage from '@/assets/ portfolio_project.png'; // Add this image to your assets
 
 const Projects = () => {
   const projects = [
-    {
-      title: 'Pet Grooming Web Application',
-      description:
-        'A modern web application designed for pet grooming services, allowing users to explore services, book appointments, and view grooming details through a clean and responsive interface.',
-      image: petGroomingImage,
-      technologies: ['React', 'CSS', 'JavaScript'],
-      duration: 'February 2025 - March 2025',
-      highlights: [
-        'User-friendly UI for pet grooming services',
-        'Responsive design for all devices',
-        'Service listing and booking flow',
-      ],
-      liveUrl: 'https://pet-groo-ming-five.vercel.app/',
-      githubUrl: 'https://github.com/venkataprasad2024/Pet-GrooMing',
-    },
     {
       title: 'React Mini Tasks',
       description:
@@ -42,6 +28,21 @@ const Projects = () => {
       githubUrl: 'https://github.com/venkataprasad2024/REACT-MINI-TASKS',
     },
     {
+      title: 'Pet Grooming Web Application',
+      description:
+        'A modern web application designed for pet grooming services, allowing users to explore services, book appointments, and view grooming details through a clean and responsive interface.',
+      image: petGroomingImage,
+      technologies: ['React', 'CSS', 'JavaScript'],
+      duration: 'February 2025 - March 2025',
+      highlights: [
+        'User-friendly UI for pet grooming services',
+        'Responsive design for all devices',
+        'Service listing and booking flow',
+      ],
+      liveUrl: 'https://pet-groo-ming-five.vercel.app/',
+      githubUrl: 'https://github.com/venkataprasad2024/Pet-GrooMing',
+    },
+    {
       title: 'ETrack - Property Management',
       description:
         'A full-stack property and asset management platform with barcode-based search and categorized inventory, aimed at reducing manual tracking effort and improving efficiency.',
@@ -56,6 +57,22 @@ const Projects = () => {
       ],
       liveUrl: 'https://e-track-project.vercel.app/',
       githubUrl: 'https://github.com/sandhyakorimi/Etrack_Management',
+    },
+    {
+      title: 'Personal Portfolio Website',
+      description:
+        'A modern, responsive, and visually stunning personal portfolio built with React and Tailwind CSS. Features smooth animations, dark futuristic theme, and showcases my skills, projects, and journey as a full-stack developer.',
+      image: portfolioImage,
+      technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'Lucide Icons'],
+      duration: 'November 2025 - December 2025',
+      highlights: [
+        'Fully responsive design with mobile-first approach',
+        'Smooth scroll and micro-interactions',
+        'Dark futuristic theme with glassmorphism',
+        'Dynamic sections with Framer Motion animations',
+      ],
+      liveUrl: 'https://your-portfolio-live-url.com', // Replace with your actual live URL
+      githubUrl: 'https://github.com/venkataprasad2024/your-portfolio-repo', // Replace with actual repo
     },
   ];
 
@@ -132,11 +149,9 @@ const Projects = () => {
                     <Calendar size={18} />
                     {project.duration}
                   </div>
-
                   <h3 className="text-3xl md:text-4xl font-bold text-gray-100 mb-6">
                     {project.title}
                   </h3>
-
                   <p className="text-lg text-gray-300 leading-relaxed">
                     {project.description}
                   </p>
@@ -145,12 +160,14 @@ const Projects = () => {
                 {/* Tech Tags */}
                 <div className="flex flex-wrap gap-3">
                   {project.technologies.map((tech) => (
-                    <span
+                    <motion.span
                       key={tech}
-                      className="px-4 py-2 bg-gradient-to-r from-gray-800/80 to-gray-900/80 backdrop-blur-sm text-gray-200 rounded-full text-sm font-medium border border-gray-700 hover:border-cyan-500/50 transition-all duration-300"
+                      whileHover={{ y: -8 }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      className="px-4 py-2 bg-gradient-to-r from-gray-800/80 to-gray-900/80 backdrop-blur-sm text-gray-200 rounded-full text-sm font-medium border border-gray-700 hover:shadow-lg hover:shadow-cyan-500/30 transition-shadow duration-500"
                     >
                       {tech}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
 
@@ -181,7 +198,6 @@ const Projects = () => {
                       Live Demo
                     </Button>
                   </a>
-
                   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                     <Button
                       size="lg"

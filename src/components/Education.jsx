@@ -25,13 +25,13 @@ const Education = () => {
       icon: <GraduationCap className="w-8 h-8" />,
     },
     {
-      degree: "Intermediate – MPC",
+      degree: "Intermediate – MEC",
       institution: "Master Minds, Andhra Pradesh, India",
       duration: "2017 – 2019",
       grade: "CGPA: 9.67",
       status: "Completed",
       description:
-        "Studied Mathematics, Physics, and Chemistry with strong emphasis on logical reasoning and problem-solving.",
+        "Studied Mathematics, Economics, and Commerce with strong emphasis on logical reasoning and problem-solving.",
       icon: <Award className="w-8 h-8" />,
     },
     {
@@ -107,10 +107,10 @@ const Education = () => {
                   {/* Inner Hover Glow */}
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-                  {/* Status Badge */}
-                  <div className="absolute top-6 right-6 z-10">
+                  {/* Status Badge - Mobile-optimized positioning & size */}
+                  <div className="absolute top-4 right-4 md:top-6 md:right-6 z-10">
                     <span
-                      className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider backdrop-blur-sm border ${
+                      className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-xs font-bold uppercase tracking-wider backdrop-blur-sm border ${
                         edu.status === "Currently Pursuing"
                           ? 'bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-400 border-cyan-500/50'
                           : 'bg-gray-800/70 text-gray-400 border-gray-700'
@@ -168,7 +168,7 @@ const Education = () => {
           </div>
         </div>
 
-        {/* Academic Highlights - Hover effects REMOVED */}
+        {/* Academic Highlights */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

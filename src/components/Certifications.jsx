@@ -108,10 +108,12 @@ const Certifications = () => {
               {/* Inner Glow on Hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-              {/* Featured Badge */}
+              {/* Featured Badge - Fixed positioning */}
               {cert.featured && (
-                <div className="absolute -top-3 -right-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg shadow-purple-500/30">
-                  Featured
+                <div className="absolute top-0 right-0 translate-x-2 -translate-y-2 z-20">
+                  <span className="inline-block px-5 py-2 bg-gradient-to-r from-cyan-500 to-purple-500 text-white text-xs font-bold rounded-full shadow-2xl shadow-purple-600/50 border border-white/20">
+                    Featured
+                  </span>
                 </div>
               )}
 

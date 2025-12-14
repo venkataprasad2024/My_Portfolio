@@ -5,7 +5,7 @@ import { Briefcase, Calendar, MapPin, TrendingUp } from 'lucide-react';
 const Experience = () => {
   const experience = {
     title: 'Full-Stack Web Development Trainee',
-    company: 'Technical Hub – Aditya College of Engineering and Technology',
+    company: 'Technical Hub – Aditya University',
     duration: 'June 2024 - June 2025',
     location: 'Surampalem, Andhra Pradesh',
     type: 'Training Program',
