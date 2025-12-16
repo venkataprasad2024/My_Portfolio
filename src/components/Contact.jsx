@@ -117,9 +117,10 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Contact Info & Social */}
-          <div className="space-y-12">
+        {/* Main Grid - Centered on mobile, side-by-side on desktop */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start mx-auto max-w-5xl">
+          {/* Contact Info & Social - Centered on mobile */}
+          <div className="space-y-12 mx-auto w-full max-w-md lg:max-w-none">
             {/* Contact Details */}
             <motion.div
               initial={{ opacity: 0, x: -60 }}
@@ -128,7 +129,7 @@ const Contact = () => {
               transition={{ duration: 0.8 }}
               className="space-y-6"
             >
-              <h3 className="text-3xl font-bold text-gray-100">
+              <h3 className="text-3xl font-bold text-gray-100 text-center lg:text-left">
                 Get in Touch
               </h3>
 
@@ -164,10 +165,10 @@ const Contact = () => {
               transition={{ delay: 0.3 }}
               className="space-y-6"
             >
-              <h3 className="text-2xl font-bold text-gray-200">
+              <h3 className="text-2xl font-bold text-gray-200 text-center lg:text-left">
                 Connect With Me
               </h3>
-              <div className="flex gap-8">
+              <div className="flex gap-8 justify-center lg:justify-start">
                 {socialLinks.map((social, i) => (
                   <motion.a
                     key={i}
@@ -205,17 +206,17 @@ const Contact = () => {
             </motion.div>
           </div>
 
-          {/* Contact Form */}
+          {/* Contact Form - Centered on mobile */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative mx-auto w-full max-w-md lg:max-w-none"
           >
             <div className="absolute -inset-1 md:-inset-2 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-60" />
             <div className="relative p-6 md:p-12 rounded-3xl bg-gradient-to-br from-gray-800/60 to-gray-900/70 backdrop-blur-md border border-gray-700/50">
-              <h3 className="text-2xl md:text-4xl font-bold text-gray-100 mb-8">
+              <h3 className="text-2xl md:text-4xl font-bold text-gray-100 mb-8 text-center lg:text-left">
                 Send a Message
               </h3>
 
