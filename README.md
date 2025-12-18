@@ -25,13 +25,14 @@ A modern, futuristic personal portfolio built with **React** and **TailwindCSS**
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
-## 📂 Project Structure 
+## 📂 Project Structure
 
+```text
 my-portfolio/
 ├── public/
 │   └── (screenshots, resume.pdf)
 ├── src/
-│   ├── components/ (Hero, About, Skills, etc.)
+│   ├── components/        # Hero, About, Skills, etc.
 │   ├── assets/
 │   └── App.jsx
 ├── tailwind.config.js
