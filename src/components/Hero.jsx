@@ -1,13 +1,16 @@
- import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   const handleDownloadResume = () => {
+    // Updated direct download link using your new Google Drive file ID
+    const directDownloadUrl = 'https://drive.google.com/uc?export=download&id=1PxDXK0rlybRpgvGvdjeZ3JAfgiSOSDPD';
+    
     const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'Venkata_Prasad_Resume.pdf';
+    link.href = directDownloadUrl;
+    link.download = 'Venkata_Prasad_Resume.pdf'; // Ensures the downloaded file has your name
     link.click();
   };
 
@@ -121,7 +124,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator - ONLY on desktop/tablet, completely hidden on mobile */}
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
